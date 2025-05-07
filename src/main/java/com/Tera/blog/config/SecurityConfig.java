@@ -33,6 +33,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(new AntPathRequestMatcher("/api/members/signup")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/api/members/login")).permitAll()
+                        .requestMatchers("/actuator/health", "/actuator/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(new JwtAuthenticationFilter(jwtUtil, userDetailsService),
