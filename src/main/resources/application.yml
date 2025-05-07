@@ -1,11 +1,12 @@
 spring:
   datasource:
     url: jdbc:mysql://svc.sel4.cloudtype.app:30996/tera_blog
+    driver-class-name: com.mysql.cj.jdbc.Driver
     username: terauser
     password: tera1234!
-
   jpa:
     open-in-view: false
+    database-platform: org.hibernate.dialect.MariaDBDialect
     hibernate:
       ddl-auto: update
     show-sql: true
