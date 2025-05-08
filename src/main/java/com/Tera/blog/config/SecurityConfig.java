@@ -25,8 +25,9 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(org.springframework.security.config.annotation.web.builders.HttpSecurity http) throws Exception {
-        http
+        http    //세션 기반으로 인증하는게 아니라서 csrf는 비활성화
                 .csrf(AbstractHttpConfigurer::disable)
+                //세션을 아예 생성 안 하게 설정
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(org.springframework.security.config.http.SessionCreationPolicy.STATELESS)
                 )

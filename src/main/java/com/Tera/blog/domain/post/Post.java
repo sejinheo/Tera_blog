@@ -8,9 +8,11 @@ import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import java.time.LocalDateTime;
 import jakarta.persistence.*;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
+@NoArgsConstructor
 public class Post {
 
     @Id
@@ -25,8 +27,6 @@ public class Post {
 
     private LocalDateTime createdAt;
 
-    protected Post() {
-    }
     public Post(String title, String content, Member member) {
         this.title = title;
         this.content = content;

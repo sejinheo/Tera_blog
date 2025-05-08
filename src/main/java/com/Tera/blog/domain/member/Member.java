@@ -2,9 +2,11 @@ package com.Tera.blog.domain.member;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
+@NoArgsConstructor
 public class Member {
 
     @Id
@@ -19,9 +21,7 @@ public class Member {
 
     @Column(nullable = false)
     private String password;
-    //JPA는 기본 생성자가 반드시 필요
-    protected Member() {
-    }
+
     public void changePassword(String newPassword) {
         this.password = newPassword;
     }
