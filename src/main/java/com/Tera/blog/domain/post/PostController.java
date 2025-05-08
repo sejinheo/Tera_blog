@@ -20,7 +20,7 @@ public class PostController {
     @PostMapping
     public Long createPost(@Valid @RequestBody PostRequestDto dto,
                            @AuthenticationPrincipal UserDetailsImpl userDetails) {
-        return postService.create(dto.getTitle(),dto.getContent(), userDetails.getMember());
+        return postService.create(dto, userDetails.getMember());
     }
 
 
@@ -35,7 +35,7 @@ public class PostController {
     public void updatePost(@PathVariable Long id,
                            @RequestBody PostRequestDto dto,
                            @AuthenticationPrincipal UserDetailsImpl userDetails){
-        postService.update(id, dto.getTitle(), dto.getContent(), userDetails.getMember());
+        postService.update(id, dto, userDetails.getMember());
     }
     @DeleteMapping("/{id}")
     public void deletePost(@PathVariable Long id,
