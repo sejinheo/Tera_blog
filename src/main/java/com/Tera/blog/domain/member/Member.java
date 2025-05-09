@@ -1,6 +1,7 @@
 package com.Tera.blog.domain.member;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -25,6 +26,8 @@ public class Member {
     public void changePassword(String newPassword) {
         this.password = newPassword;
     }
+
+    @Builder
     public Member(String email, String loginId, String password) {
         this.email = email;
         this.loginId = loginId;

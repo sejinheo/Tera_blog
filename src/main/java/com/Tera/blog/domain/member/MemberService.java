@@ -24,11 +24,12 @@ public class MemberService {
            throw new AlreadyExistException("이미 사용중인 아이디 입니다.");
        }
        String encodedPassword = passwordEncoder.encode(signUpRequestDto.getPassword());
-       Member member = new Member(
-               signUpRequestDto.getEmail(),
-               signUpRequestDto.getLoginId(),
-               encodedPassword
-       );
+       Member member = Member.builder()
+               .email(signUpRequestDto.getEmail())
+               .loginId(signUpRequestDto.getLoginId())
+               .password(encodedPassword)
+               .build();
+
        return memberRepository.save(member).getId();
    }
 
