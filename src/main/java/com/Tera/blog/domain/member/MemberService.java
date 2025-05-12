@@ -30,7 +30,7 @@ public class MemberService {
                .password(encodedPassword)
                .build();
 
-       memberRepository.save(member).getId();
+       memberRepository.save(member);
    }
 
     public String login(MemberLoginRequestDto loginDto) {
