@@ -17,8 +17,8 @@ public class MemberController {
     private final MemberService memberService;
     @PostMapping("/signup")
     public ResponseEntity<String> signUp(@Valid @RequestBody MemberSignUpRequestDto memberSignUpRequestDto){
-        Long id = memberService.signUp(memberSignUpRequestDto);
-        return ResponseEntity.ok("회원가입 성공! ID: " + id);
+        memberService.signUp(memberSignUpRequestDto);
+        return ResponseEntity.ok("회원가입 성공!!!!");
     }
     @PostMapping("/login")
     public ResponseEntity<String> login(@Valid @RequestBody MemberLoginRequestDto memberLoginRequestDto){

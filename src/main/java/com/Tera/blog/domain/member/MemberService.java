@@ -15,7 +15,7 @@ public class MemberService {
    private final BCryptPasswordEncoder passwordEncoder;
     private final JwtUtil jwtUtil;
 
-   public Long signUp(MemberSignUpRequestDto signUpRequestDto) {
+   public void signUp(MemberSignUpRequestDto signUpRequestDto) {
 
        if(memberRepository.findByEmail(signUpRequestDto.getEmail()).isPresent()) {
            throw new AlreadyExistException("이미 등록된 이메일 입니다.");
@@ -30,7 +30,7 @@ public class MemberService {
                .password(encodedPassword)
                .build();
 
-       return memberRepository.save(member).getId();
+       memberRepository.save(member).getId();
    }
 
     public String login(MemberLoginRequestDto loginDto) {
