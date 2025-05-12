@@ -6,6 +6,7 @@ import com.Tera.blog.domain.post.dto.PostResponseDto;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,9 +19,10 @@ public class PostController {
     private final PostService postService;
 
     @PostMapping
-    public Long createPost(@Valid @RequestBody PostRequestDto dto,
-                           @AuthenticationPrincipal UserDetailsImpl userDetails) {
-        return postService.create(dto, userDetails.getMember());
+    public ResponseEntity<String> createPost(@Valid @RequestBody PostRequestDto dto,
+                                       @AuthenticationPrincipal UserDetailsImpl userDetails) {
+                postService.create(dto, userDetails.getMember());
+                return ResponseEntity.ok("Post 작성 성공!!");
     }
 
 

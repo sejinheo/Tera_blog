@@ -16,9 +16,9 @@ import java.util.NoSuchElementException;
 @Slf4j
 public class PostService {
     private final PostRepository postRepository;
-    public Long create(PostRequestDto Dto, Member member) {
+    public void create(PostRequestDto Dto, Member member) {
         Post post = new Post(Dto.getTitle(),Dto.getContent(), member);
-        return postRepository.save(post).getId();
+        postRepository.save(post);
     }
 
     public void update(Long postId,PostRequestDto Dto, Member member) {
