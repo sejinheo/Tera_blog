@@ -17,7 +17,7 @@ import java.util.NoSuchElementException;
 public class PostService {
     private final PostRepository postRepository;
     public void create(PostRequestDto Dto, Member member) {
-        Post post = new Post(Dto.getTitle(),Dto.getContent(), member);
+        Post post = new Post(Dto.title(),Dto.content(), member);
         postRepository.save(post);
     }
 
@@ -27,15 +27,15 @@ public class PostService {
         if(!post.getMember().getId().equals(member.getId())) {
             throw new IllegalArgumentException("작성자만 수정할 수 있습니다.");
         }
-       if(Dto.getTitle() != null && !Dto.getTitle().isBlank()) {
+       if(Dto.title() != null && !Dto.title().isBlank()) {
            log.info("타이틀 업데이트 호출됨");
-           post.updateTitle(Dto.getTitle());
+           post.updateTitle(Dto.title());
        }
-       if(Dto.getContent() != null && !Dto.getContent().isBlank()) {
+       if(Dto.content() != null && !Dto.content().isBlank()) {
            log.info("콘텐츠 업데이트 호출됨");
-           post.updateContent(Dto.getContent());
+           post.updateContent(Dto.content());
        }
-       log.info("PostService.update() 호출 - 제목: {}, 내용: {}", Dto.getTitle(), Dto.getContent());
+       log.info("PostService.update() 호출 - 제목: {}, 내용: {}", Dto.title(), Dto.content());
         postRepository.save(post);
     }
 
