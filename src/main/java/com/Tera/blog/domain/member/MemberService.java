@@ -34,10 +34,10 @@ public class MemberService {
    }
 
     public String login(MemberLoginRequestDto loginDto) {
-        Member member = memberRepository.findByLoginId(loginDto.getLoginId())
+        Member member = memberRepository.findByLoginId(loginDto.loginId())
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 아이디입니다."));
 
-      if (!passwordEncoder.matches(loginDto.getPassword(), member.getPassword())) {
+      if (!passwordEncoder.matches(loginDto.password(), member.getPassword())) {
             throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
         }
 
