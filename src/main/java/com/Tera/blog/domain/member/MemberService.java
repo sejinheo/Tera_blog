@@ -17,16 +17,16 @@ public class MemberService {
 
    public void signUp(MemberSignUpRequestDto signUpRequestDto) {
 
-       if(memberRepository.findByEmail(signUpRequestDto.getEmail()).isPresent()) {
+       if(memberRepository.findByEmail(signUpRequestDto.email()).isPresent()) {
            throw new AlreadyExistException("이미 등록된 이메일 입니다.");
        }
-       if(memberRepository.findByLoginId(signUpRequestDto.getLoginId()).isPresent()) {
+       if(memberRepository.findByLoginId(signUpRequestDto.loginId()).isPresent()) {
            throw new AlreadyExistException("이미 사용중인 아이디 입니다.");
        }
-       String encodedPassword = passwordEncoder.encode(signUpRequestDto.getPassword());
+       String encodedPassword = passwordEncoder.encode(signUpRequestDto.password());
        Member member = Member.builder()
-               .email(signUpRequestDto.getEmail())
-               .loginId(signUpRequestDto.getLoginId())
+               .email(signUpRequestDto.email())
+               .loginId(signUpRequestDto.loginId())
                .password(encodedPassword)
                .build();
 

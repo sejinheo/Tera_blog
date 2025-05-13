@@ -5,14 +5,15 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 
-@Getter
-public class MemberSignUpRequestDto {
+public record MemberSignUpRequestDto (
     @NotBlank
     @Email
-    private String email;
+    String email,
+
     @NotBlank
     @Size(min = 6, message = "비밀번호는 6자 이상이어야 합니다.")
-    private String password;
+    String password,
+
     @NotBlank
-    private String loginId;
-}
+    String loginId
+){}
